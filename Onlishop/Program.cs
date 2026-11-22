@@ -1,12 +1,15 @@
-﻿class Progrm
+﻿class Program
 {
     static void Main()
     {
-        var laptop = new Produkt("Laptop", 1000m, 2);
-        var maus = new Produkt("Maus", 50m, 5);
+        var laptop = new PhysischesProdukt("Gaming-Laptop", 1200m, lagerbestand: 2, gewichtInKg: 2.5);
+        var maus = new PhysischesProdukt("Funk-Maus", 40m, lagerbestand: 5, gewichtInKg: 0.2);
+        var windowsKey = new DigitalesProdukt("Windows 11 Pro Lizenz", 145m, "https://techstore.de");
+
         var korb = new Warenkorb();
-        korb.Hinzufügen(laptop, 1);
-        korb.Hinzufügen(maus, 2); //Zwieschensumme =1100
+        korb.Hinzufuegen(laptop, 1);     // 0 € Versand (über 500 €)
+        korb.Hinzufuegen(maus, 1);       // 4,99 € Versand (unter 500 €)
+        korb.Hinzufuegen(windowsKey, 1); // 0 € Versand (digital)
         Console.WriteLine($"Zwischensumme: {korb.BerechneZwieschensumme():C}");        // Erwartet: 1.100,00 €
 
         //Rabatt & Zahlungsmethod

@@ -4,9 +4,12 @@
     {
         // Zwischensumme vom Warenkorb holen
         decimal zwischensumme = korb.BerechneZwieschensumme();
+        decimal versand = korb.BerechneGesamtVersand();
+        decimal endpreis = rabatt.WendeRabattAn(zwischensumme) + versand;
+
+        Console.WriteLine($"Warenwert: {zwischensumme:C} | Versand: {versand:C} | Gesamt: {endpreis:C}");
 
         // Rabatt anwenden
-        decimal endpreis = rabatt.WendeRabattAn(zwischensumme);
         Console.WriteLine($"Zwischensumme: {zwischensumme:C} | Nach Rabatt: {endpreis:C}");
 
         // Zahlung ausführen
